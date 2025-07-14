@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dygof8fsnjy6"]
+[gd_scene load_steps=5 format=3 uid="uid://dygof8fsnjy6"]
 
 [ext_resource type="Script" uid="uid://coydqqs5hghuh" path="res://scene/virtual_control/virtual_control.gd" id="1_kbj2l"]
 [ext_resource type="Texture2D" uid="uid://b8d2bq5orh0c2" path="res://resource/art/keyboard/Base.png" id="2_kbj2l"]
+[ext_resource type="Script" uid="uid://c68fy5x3swpir" path="res://scene/virtual_control/rocker.gd" id="3_tm2u4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tm2u4"]
 atlas = ExtResource("2_kbj2l")
@@ -26,3 +27,4 @@ scale = Vector2(3, 3)
 position = Vector2(-26, -26)
 texture_normal = SubResource("AtlasTexture_tm2u4")
 visibility_mode = 1
+script = ExtResource("3_tm2u4")
