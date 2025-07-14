@@ -32,11 +32,9 @@ func _process(delta: float) -> void:
 
 		if velocity.x != 0:
 				$AnimatedSprite2D.animation = "walk"
-				$AnimatedSprite2D.flip_v = false
 				$AnimatedSprite2D.flip_h = velocity.x < 0
 		elif velocity.y != 0:
 				$AnimatedSprite2D.animation = "up"
-				$AnimatedSprite2D.flip_v = velocity.y > 0
 
 
 @warning_ignore("unused_parameter")
@@ -44,10 +42,6 @@ func _on_body_entered(body) -> void:
 		hide()
 		hit.emit()
 
-		$CollisionShape2D.set_deferred("disabled", true)
-
 func start(pos: Vector2) -> void:
 		position = pos
 		show()
-
-		$CollisionShape2D.disabled = false

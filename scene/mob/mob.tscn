@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ba5gq25s3xos2"]
+[gd_scene load_steps=16 format=3 uid="uid://ba5gq25s3xos2"]
 
 [ext_resource type="Script" uid="uid://bhjf05dlpytm6" path="res://scene/mob/mob.gd" id="1_wwl5v"]
 [ext_resource type="Texture2D" uid="uid://dty58xpriti7k" path="res://resource/art/mob/enemyFlyingAlt_1.png" id="2_4u50n"]
@@ -46,7 +46,28 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_eqsov"]
 radius = 48.0
-height = 132.0
+height = 96.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4u50n"]
+size = Vector2(72, 42)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wwl5v"]
+radius = 6.9
+height = 28.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wwl5v"]
+size = Vector2(63, 23.5)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4u50n"]
+radius = 8.0
+height = 53.7381
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wwl5v"]
+radius = 33.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_51uj1"]
+radius = 8.0
+height = 140.0
 
 [node name="Mob" type="RigidBody2D" groups=["mobs"]]
 collision_mask = 0
@@ -55,16 +76,53 @@ script = ExtResource("1_wwl5v")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 rotation = -1.5708
-scale = Vector2(0.75, 0.75)
+scale = Vector2(0.778646, 0.75)
 sprite_frames = SubResource("SpriteFrames_yscv0")
 animation = &"walk"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+visible = false
+position = Vector2(-3.8147e-06, 0)
+scale = Vector2(3.6, 5)
+
+[node name="HeadShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -15)
 scale = Vector2(0.75, 0.75)
 shape = SubResource("CapsuleShape2D_eqsov")
 
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-position = Vector2(-3.8147e-06, 0)
-scale = Vector2(3.6, 5)
+[node name="BodyShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 7)
+shape = SubResource("RectangleShape2D_4u50n")
+
+[node name="LeftLegShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-9, 37.5)
+shape = SubResource("CapsuleShape2D_wwl5v")
+
+[node name="RightLegShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(7, 37)
+shape = SubResource("CapsuleShape2D_wwl5v")
+
+[node name="SwimLegShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 39.75)
+shape = SubResource("RectangleShape2D_wwl5v")
+
+[node name="Fly0LeftLegShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-36, 20)
+rotation = 0.759218
+shape = SubResource("CapsuleShape2D_4u50n")
+
+[node name="Fly0RightLegShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(37, 21)
+rotation = -0.759218
+shape = SubResource("CapsuleShape2D_4u50n")
+
+[node name="Fly1HeadShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 5)
+shape = SubResource("CircleShape2D_wwl5v")
+
+[node name="Fly1LegShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 20)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_51uj1")
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
