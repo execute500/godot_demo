@@ -1,0 +1,84 @@
+[gd_scene load_steps=5 format=3 uid="uid://bxle8p05pgf27"]
+
+[ext_resource type="Script" uid="uid://d01xy0nq2xhte" path="res://scene/HUB/hub.gd" id="1_la6xf"]
+[ext_resource type="FontFile" uid="uid://dudq5mu84sdfe" path="res://resource/fonts/SmileySans-Oblique.otf" id="1_wvvj7"]
+
+[sub_resource type="InputEventAction" id="InputEventAction_la6xf"]
+action = &"start_game"
+
+[sub_resource type="Shortcut" id="Shortcut_th4pi"]
+events = [SubResource("InputEventAction_la6xf")]
+
+[node name="HUB" type="CanvasLayer"]
+script = ExtResource("1_la6xf")
+
+[node name="ScoreLabel" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -22.5
+offset_right = 22.5
+offset_bottom = 78.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 64
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Message" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -240.0
+offset_top = -43.0
+offset_right = 240.0
+offset_bottom = 43.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_wvvj7")
+theme_override_font_sizes/font_size = 64
+text = "躲避爬虫!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="StartButton" type="Button" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -98.0
+offset_top = 202.0
+offset_right = 102.0
+offset_bottom = 302.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_wvvj7")
+theme_override_font_sizes/font_size = 64
+shortcut = SubResource("Shortcut_th4pi")
+text = "开始"
+
+[node name="HighestScore" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.0
+offset_top = 40.0
+offset_right = 80.0
+offset_bottom = 99.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 48
+text = "最高分: 0"
+
+[node name="MessageTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="timeout" from="MessageTimer" to="." method="_on_message_timer_timeout"]

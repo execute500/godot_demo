@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://dygof8fsnjy6"]
+
+[ext_resource type="Script" uid="uid://coydqqs5hghuh" path="res://scene/virtual_control/virtual_control.gd" id="1_kbj2l"]
+[ext_resource type="Texture2D" uid="uid://b8d2bq5orh0c2" path="res://resource/art/keyboard/Base.png" id="2_kbj2l"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tm2u4"]
+atlas = ExtResource("2_kbj2l")
+region = Rect2(374, 6, 52, 52)
+
+[node name="VirtualControl" type="CanvasLayer"]
+script = ExtResource("1_kbj2l")
+
+[node name="Stick" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 139.0
+offset_top = -131.0
+offset_right = 139.0
+offset_bottom = -131.0
+grow_vertical = 0
+scale = Vector2(3, 3)
+
+[node name="Rocker" type="TouchScreenButton" parent="Stick"]
+position = Vector2(-26, -26)
+texture_normal = SubResource("AtlasTexture_tm2u4")
+visibility_mode = 1
