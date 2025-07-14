@@ -11,9 +11,11 @@ config_version=5
 [application]
 
 config/name="躲避他!"
+config/description="一个自制的小游戏"
 config/version="1.2"
 run/main_scene="uid://2bgrjcaffcx1"
 config/features=PackedStringArray("4.4", "Mobile")
+config/icon="uid://iwfy084ggakw"
 
 [display]
 
